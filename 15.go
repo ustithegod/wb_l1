@@ -1,14 +1,12 @@
 package main
 
-// Проблема представленного фрагмента кода заключается в неоправданном использовании глобальной
-// переменной justString. Глобальные переменные могут использоваться в сразу нескольких функциях,
-// что ухудшает поддерживаемость и читабельность кода. В корректной реализации данного фрагмеента
-// должны использоваться локальные переменные.
+var justString string
 
-func someFunc() string {
-	return createHugeString(1 << 10)[:100]
+func someFunc() {
+  v := createHugeString(1 &lt;&lt; 10)
+  justString = string([]byte(v[:100]))
 }
 
 func main() {
-	justString := someFunc()
+  someFunc()
 }
